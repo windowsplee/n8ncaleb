@@ -88,13 +88,7 @@
           "propertyValues": [
             {
               "key": "Title|title",
-              "title": [
-                {
-                  "text": {
-                    "content": "={{ $json.title }}"
-                  }
-                }
-              ]
+              "title": "={{ $json.title }}"
             },
             {
               "key": "URL|url",
