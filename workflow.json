@@ -87,7 +87,7 @@
         "propertiesUi": {
           "propertyValues": [
             {
-              "key": "Title",
+              "key": "Title|title",
               "title": [
                 {
                   "text": {
@@ -97,15 +97,15 @@
               ]
             },
             {
-              "key": "URL",
+              "key": "URL|url",
               "url": "={{ $json.link }}"
             },
             {
-              "key": "Published Date",
+              "key": "Published Date|date",
               "date": "={{ $json.isoDate }}"
             },
             {
-              "key": "Category",
+              "key": "Category|select",
               "select": {
                 "name": "={{ $('Split In Batches').item.json.category }}"
               }
