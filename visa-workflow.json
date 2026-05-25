@@ -24,7 +24,7 @@
     },
     {
       "parameters": {
-        "url": "https://t.me/s/us_visa_slots",
+        "url": "https://t.me/s/us_visa_slots_alerts",
         "options": {}
       },
       "id": "22222222-2222-2222-2222-222222222222",
@@ -79,7 +79,7 @@
         "databaseId": {
           "__rl": true,
           "mode": "list",
-          "value": "36bb03d4-b238-81b4-a1e1-c76542aecb1d"
+          "value": "36bb03d4-b238-81e1-bcdb-e5fb769c90c6"
         },
         "limit": 1,
         "options": {
@@ -128,7 +128,7 @@
         "databaseId": {
           "__rl": true,
           "mode": "list",
-          "value": "36bb03d4-b238-81b4-a1e1-c76542aecb1d"
+          "value": "36bb03d4-b238-81e1-bcdb-e5fb769c90c6"
         },
         "propertiesUi": {
           "propertyValues": [
@@ -138,15 +138,11 @@
             },
             {
               "key": "URL|url",
-              "urlValue": "https://t.me/s/us_visa_slots"
+              "urlValue": "https://t.me/s/us_visa_slots_alerts"
             },
             {
               "key": "Published Date|date",
               "date": "={{ new Date().toISOString() }}"
-            },
-            {
-              "key": "Category|select",
-              "selectValue": "비자 알림"
             }
           ]
         }
