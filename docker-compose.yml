@@ -16,5 +16,5 @@ services:
       - GENERIC_TIMEZONE=Asia/Seoul
       - TZ=Asia/Seoul
     volumes:
-      - /volume1/docker/n8n:/home/node/.n8n
+      - /volume1/docker/n8n:/root/.n8n
     user: root
