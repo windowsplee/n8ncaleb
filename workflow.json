@@ -24,7 +24,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const keywords = [\"남양주\", \"미국 비자\", \"F1 비자\", \"임용고시\", \"다산동\", \"AI\"];\nconst items = [\n  {\n    json: {\n      category: \"종합 뉴스\",\n      url: \"https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko\"\n    }\n  }\n];\n\nfor (const kw of keywords) {\n  items.push({\n    json: {\n      category: kw,\n      url: `https://news.google.com/rss/search?q=${encodeURIComponent(kw)}&hl=ko&gl=KR&ceid=KR:ko`\n    }\n  });\n}\n\nreturn items;"
+        "jsCode": "const keywords = [\"남양주\", \"미국 비자\", \"F1 비자\", \"임용고시\", \"다산동\", \"AI\"];\nconst items = [\n  {\n    json: {\n      category: \"종합 뉴스\",\n      url: \"https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko\"\n    }\n  }\n];\n\nfor (const kw of keywords) {\n  items.push({\n    json: {\n      category: kw,\n      url: `https://news.google.com/rss/search?q=${encodeURIComponent(kw + ' when:1d')}&hl=ko&gl=KR&ceid=KR:ko`\n    }\n  });\n}\n\nreturn items;"
       },
       "id": "b1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
       "name": "Define Keywords",
@@ -65,10 +65,10 @@
     {
       "parameters": {
         "operation": "limit",
-        "maxItems": 10
+        "maxItems": 5
       },
       "id": "d13545df-1925-470b-9ee9-a9a3fbfbf62d",
-      "name": "Limit to 10 items",
+      "name": "Limit to 5 items",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 2.1,
       "position": [
@@ -160,14 +160,14 @@
       "main": [
         [
           {
-            "node": "Limit to 10 items",
+            "node": "Limit to 5 items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Limit to 10 items": {
+    "Limit to 5 items": {
       "main": [
         [
           {
