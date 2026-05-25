@@ -92,7 +92,7 @@
             },
             {
               "key": "URL|url",
-              "url": "={{ $json.link }}"
+              "urlValue": "={{ $json.link }}"
             },
             {
               "key": "Published Date|date",
@@ -100,9 +100,7 @@
             },
             {
               "key": "Category|select",
-              "select": {
-                "name": "={{ $('Split In Batches').item.json.category }}"
-              }
+              "selectValue": "={{ $('Split In Batches').item.json.category }}"
             }
           ]
         }
