@@ -24,15 +24,42 @@
     },
     {
       "parameters": {
-        "url": "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko"
+        "jsCode": "const keywords = [\"남양주\", \"미국 비자\", \"F1 비자\", \"임용고시\", \"다산동\", \"AI\"];\nconst items = [\n  {\n    json: {\n      category: \"종합 뉴스\",\n      url: \"https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko\"\n    }\n  }\n];\n\nfor (const kw of keywords) {\n  items.push({\n    json: {\n      category: kw,\n      url: `https://news.google.com/rss/search?q=${encodeURIComponent(kw)}&hl=ko&gl=KR&ceid=KR:ko`\n    }\n  });\n}\n\nreturn items;"
+      },
+      "id": "b1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "name": "Define Keywords",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6e",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        740,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}"
       },
       "id": "90ba9ca1-2ef3-4bc2-bf56-3b32e01dfdfa",
       "name": "RSS Read",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1,
       "position": [
-        560,
-        240
+        920,
+        200
       ]
     },
     {
@@ -45,8 +72,8 @@
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 2.1,
       "position": [
-        740,
-        240
+        1100,
+        200
       ]
     },
     {
@@ -76,6 +103,12 @@
             {
               "key": "Published Date",
               "date": "={{ $json.isoDate }}"
+            },
+            {
+              "key": "Category",
+              "select": {
+                "name": "={{ $('Split In Batches').item.json.category }}"
+              }
             }
           ]
         }
@@ -85,8 +118,8 @@
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.1,
       "position": [
-        920,
-        240
+        1280,
+        200
       ],
       "credentials": {
         "notionApi": {
@@ -98,6 +131,28 @@
   ],
   "connections": {
     "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Define Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define Keywords": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
       "main": [
         [
           {
@@ -124,6 +179,17 @@
         [
           {
             "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
             "type": "main",
             "index": 0
           }
