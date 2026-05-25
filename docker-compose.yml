@@ -15,6 +15,7 @@ services:
       - WEBHOOK_URL=http://192.168.0.11:5678/
       - GENERIC_TIMEZONE=Asia/Seoul
       - TZ=Asia/Seoul
+      - N8N_SECURE_COOKIE=false
     volumes:
       - /volume1/docker/n8n:/root/.n8n
     user: root
