@@ -1,0 +1,138 @@
+{
+  "id": "1",
+  "name": "Google News to Notion Daily",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "7a9a6b68-cf1c-43f1-bd5f-e555938ea5f0",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko"
+      },
+      "id": "90ba9ca1-2ef3-4bc2-bf56-3b32e01dfdfa",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        560,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "limit",
+        "maxItems": 10
+      },
+      "id": "d13545df-1925-470b-9ee9-a9a3fbfbf62d",
+      "name": "Limit to 10 items",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 2.1,
+      "position": [
+        740,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Title",
+              "title": [
+                {
+                  "text": {
+                    "content": "={{ $json.title }}"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "URL",
+              "url": "={{ $json.link }}"
+            },
+            {
+              "key": "Published Date",
+              "date": "={{ $json.isoDate }}"
+            }
+          ]
+        }
+      },
+      "id": "e67ebf84-bf50-4ff6-8fb5-3f303f830303",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.1,
+      "position": [
+        920,
+        240
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "1",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Limit to 10 items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit to 10 items": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

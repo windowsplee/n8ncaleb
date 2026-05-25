@@ -1,0 +1,7 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# n8n local data (if run locally)
+.n8n/
+*.log
