@@ -38,7 +38,8 @@
     },
     {
       "parameters": {
-        "sourceKey": "data",
+        "operation": "extractHtmlContent",
+        "dataPropertyName": "data",
         "extractionValues": {
           "values": [
             {
@@ -79,7 +80,7 @@
         "databaseId": {
           "__rl": true,
           "mode": "list",
-          "value": "36bb03d4-b238-81e1-bcdb-e5fb769c90c6"
+          "value": "36cb03d4-b238-8156-a75d-f71229f7f73f"
         },
         "limit": 1,
         "options": {
@@ -128,7 +129,7 @@
         "databaseId": {
           "__rl": true,
           "mode": "list",
-          "value": "36bb03d4-b238-81e1-bcdb-e5fb769c90c6"
+          "value": "36cb03d4-b238-8156-a75d-f71229f7f73f"
         },
         "propertiesUi": {
           "propertyValues": [
