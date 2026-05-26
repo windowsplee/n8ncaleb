@@ -24,7 +24,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const keywords = [\"남양주\", \"미국 비자\", \"F1 비자\", \"임용고시\", \"다산동\", \"AI\"];\nconst items = [\n  {\n    json: {\n      category: \"종합 뉴스\",\n      url: \"https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko\"\n    }\n  }\n];\n\nfor (const kw of keywords) {\n  items.push({\n    json: {\n      category: kw,\n      url: `https://news.google.com/rss/search?q=${encodeURIComponent(kw + ' when:1d')}&hl=ko&gl=KR&ceid=KR:ko`\n    }\n  });\n}\n\nreturn items;"
+        "jsCode": "const keywords = [\"남양주\", \"임용고시\", \"다산동\", \"AI\"];\nconst items = [\n  {\n    json: {\n      category: \"종합 뉴스\",\n      url: \"https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko\"\n    }\n  }\n];\n\nfor (const kw of keywords) {\n  items.push({\n    json: {\n      category: kw,\n      url: `https://news.google.com/rss/search?q=${encodeURIComponent(kw + ' when:1d')}&hl=ko&gl=KR&ceid=KR:ko`\n    }\n  });\n}\n\nreturn items;"
       },
       "id": "b1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
       "name": "Define Keywords",
