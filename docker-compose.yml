@@ -18,4 +18,6 @@ services:
       - N8N_SECURE_COOKIE=false
     volumes:
       - /volume1/docker/n8n:/root/.n8n
+      - /volume1/docker/news-renderer/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
     user: root
