@@ -38,7 +38,7 @@
     },
     {
       "parameters": {
-        "sourceKey": "body",
+        "sourceKey": "data",
         "extractionValues": {
           "values": [
             {
